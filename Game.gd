@@ -5,7 +5,7 @@ var activetime=0
 var SceneLevel=preload("res://scenes/Level1.tscn")
 
 func _ready():
-	# globals
+	# game globals
 	Globals.gameInst = self 
 	Globals.pauseInst = $Level/PauseLayer
 	Globals.hudInst = $Level/HUDLayer
