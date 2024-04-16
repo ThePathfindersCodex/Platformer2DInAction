@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bgccvwol8qqw8"
+path="res://.godot/imported/belt_handle_1.ogg-9739a7188fdbe017a0189459e1d525ba.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/kenney-rpg-audio-for-godot/addons/kenney rpg audio/belt_handle_1.ogg"
+dest_files=["res://.godot/imported/belt_handle_1.ogg-9739a7188fdbe017a0189459e1d525ba.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

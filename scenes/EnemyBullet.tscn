@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://dsqqvegfk1hab"]
+
+[ext_resource type="Script" path="res://scripts/projectiles/EnemyBullet.gd" id="1_jxmd6"]
+[ext_resource type="Texture2D" uid="uid://c0kvjn2tcrrgr" path="res://assets/light2.png" id="2_cu4xl"]
+[ext_resource type="Texture2D" uid="uid://ct2fmdoqkfi2t" path="res://assets/bullet.png" id="3_7xt44"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ctuvt"]
+radius = 7.0
+
+[node name="EnemyBullet" type="Area2D"]
+light_mask = 10
+collision_layer = 16
+collision_mask = 3
+script = ExtResource("1_jxmd6")
+speed = 600
+damage = 2
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 170
+energy = 2.44
+range_layer_min = -1
+range_layer_max = 512
+range_item_cull_mask = 170
+shadow_enabled = true
+shadow_item_cull_mask = 64
+texture = ExtResource("2_cu4xl")
+texture_scale = 2.08
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(1, 0.054902, 0.0470588, 1)
+light_mask = 10
+texture = ExtResource("3_7xt44")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+shape = SubResource("CircleShape2D_ctuvt")

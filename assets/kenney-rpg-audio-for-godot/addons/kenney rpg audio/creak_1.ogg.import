@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bclxaknjrqf2u"
+path="res://.godot/imported/creak_1.ogg-47ba020a59248d4bcbd3ec9a8b536f35.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/kenney-rpg-audio-for-godot/addons/kenney rpg audio/creak_1.ogg"
+dest_files=["res://.godot/imported/creak_1.ogg-47ba020a59248d4bcbd3ec9a8b536f35.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

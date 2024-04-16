@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4gv8ywpbjwtb"]
+
+[ext_resource type="Script" path="res://scripts/mobs/Enemy.gd" id="1_4snp7"]
+[ext_resource type="Script" path="res://scripts/mobs/EnemyStats.gd" id="2_22lvo"]
+[ext_resource type="Texture2D" uid="uid://g7eqkyckrg6b" path="res://assets/enemy.png" id="3_fcgyw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0stfl"]
+radius = 55.0
+
+[node name="Enemy" type="Area2D"]
+light_mask = 0
+collision_layer = 16
+collision_mask = 11
+script = ExtResource("1_4snp7")
+
+[node name="EnemyStats" type="Node" parent="."]
+script = ExtResource("2_22lvo")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0.396078, 1)
+light_mask = 10
+position = Vector2(0, 7)
+texture = ExtResource("3_fcgyw")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(1, 8)
+shape = SubResource("CircleShape2D_0stfl")

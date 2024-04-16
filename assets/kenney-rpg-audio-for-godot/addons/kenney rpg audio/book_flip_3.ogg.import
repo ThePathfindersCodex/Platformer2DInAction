@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://c0vs6slt1s0l6"
+path="res://.godot/imported/book_flip_3.ogg-f09c458e8a239a8a39987a999d50907f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/kenney-rpg-audio-for-godot/addons/kenney rpg audio/book_flip_3.ogg"
+dest_files=["res://.godot/imported/book_flip_3.ogg-f09c458e8a239a8a39987a999d50907f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

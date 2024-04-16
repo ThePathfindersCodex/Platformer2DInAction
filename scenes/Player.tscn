@@ -1,0 +1,180 @@
+[gd_scene load_steps=24 format=3 uid="uid://domreaktn4pq8"]
+
+[ext_resource type="Script" path="res://scripts/Player.gd" id="1_klsk3"]
+[ext_resource type="Script" path="res://scripts/state_machine/StateMachine.gd" id="2_fhn2p"]
+[ext_resource type="Script" path="res://scripts/state_machine/Idle.gd" id="3_m5y54"]
+[ext_resource type="Script" path="res://scripts/PlayerStats.gd" id="3_xkeww"]
+[ext_resource type="Script" path="res://scripts/state_machine/Run.gd" id="4_n86r5"]
+[ext_resource type="Script" path="res://scripts/state_machine/Air.gd" id="5_licrv"]
+[ext_resource type="Script" path="res://scripts/state_machine/Stagger.gd" id="6_0jmgd"]
+[ext_resource type="Texture2D" uid="uid://dvfltv5erdaws" path="res://assets/pc.png" id="8_sgqrx"]
+[ext_resource type="Texture2D" uid="uid://c8v2u1iw8uabl" path="res://assets/light.png" id="9_8c22d"]
+[ext_resource type="Texture2D" uid="uid://vbxp7vtm8yme" path="res://assets/pc-anim.png" id="9_a5lgd"]
+[ext_resource type="Texture2D" uid="uid://c7wofm1fpdga8" path="res://assets/shield.png" id="10_th8wi"]
+[ext_resource type="Texture2D" uid="uid://cik1ota0kejmb" path="res://assets/pistol.png" id="11_qvl6n"]
+[ext_resource type="AudioStream" uid="uid://dooordarqcsok" path="res://assets/kenney-rpg-audio-for-godot/addons/kenney rpg audio/footstep_2.ogg" id="13_v001l"]
+[ext_resource type="AudioStream" uid="uid://13bq4i4pp01p" path="res://assets/kenney_sci-fi-sounds/Audio/laserSmall_000.ogg" id="14_gjtuc"]
+[ext_resource type="AudioStream" uid="uid://btys68avwg6tv" path="res://assets/kenney-rpg-audio-for-godot/addons/kenney rpg audio/knife_slice_2.ogg" id="15_nslho"]
+[ext_resource type="AudioStream" uid="uid://cj2nnu86mm4we" path="res://assets/kenney-rpg-audio-for-godot/addons/kenney rpg audio/handle_coins.ogg" id="16_biil2"]
+[ext_resource type="AudioStream" uid="uid://bl70glty8k5yx" path="res://assets/more-audio/videogame-death-sound-43894.mp3" id="17_ti7c7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4fm7d"]
+atlas = ExtResource("9_a5lgd")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1e5ak"]
+atlas = ExtResource("9_a5lgd")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vqv7i"]
+atlas = ExtResource("9_a5lgd")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iwlfi"]
+atlas = ExtResource("9_a5lgd")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_1qftw"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("8_sgqrx")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4fm7d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1e5ak")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_vqv7i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iwlfi")
+}],
+"loop": true,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6a72"]
+radius = 17.0
+height = 40.0
+
+[node name="Player" type="CharacterBody2D"]
+collision_mask = 2
+script = ExtResource("1_klsk3")
+
+[node name="StateMachine" type="Node" parent="."]
+script = ExtResource("2_fhn2p")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="StateMachine"]
+script = ExtResource("3_m5y54")
+
+[node name="Run" type="Node" parent="StateMachine"]
+script = ExtResource("4_n86r5")
+
+[node name="Air" type="Node" parent="StateMachine"]
+script = ExtResource("5_licrv")
+
+[node name="Stagger" type="Node" parent="StateMachine"]
+script = ExtResource("6_0jmgd")
+
+[node name="PlayerStats" type="Node" parent="."]
+script = ExtResource("3_xkeww")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(0, -120)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+light_mask = 2
+sprite_frames = SubResource("SpriteFrames_1qftw")
+speed_scale = 2.0
+
+[node name="SpriteShield" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
+light_mask = 2
+position = Vector2(37, 17)
+scale = Vector2(0.602539, 0.602539)
+texture = ExtResource("10_th8wi")
+offset = Vector2(-62, -10)
+
+[node name="SpriteBoots" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
+light_mask = 2
+
+[node name="SpritePistol" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
+light_mask = 2
+position = Vector2(22, 22)
+scale = Vector2(0.28125, 0.28125)
+texture = ExtResource("11_qvl6n")
+offset = Vector2(-10, -30)
+flip_h = true
+
+[node name="SpriteKey" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
+light_mask = 2
+
+[node name="SpriteDmg" type="Sprite2D" parent="AnimatedSprite2D"]
+visible = false
+self_modulate = Color(1, 0, 0.0352941, 1)
+light_mask = 2
+texture = ExtResource("8_sgqrx")
+
+[node name="Timer" type="Timer" parent="AnimatedSprite2D/SpriteDmg"]
+wait_time = 0.7
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+visible = false
+light_mask = 2
+texture = ExtResource("8_sgqrx")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+light_mask = 2
+color = Color(0.654902, 0.654902, 0, 1)
+energy = 2.45
+range_layer_min = -1
+range_layer_max = 512
+range_item_cull_mask = 130
+shadow_enabled = true
+shadow_color = Color(0, 0, 0, 0.909804)
+shadow_filter = 2
+shadow_item_cull_mask = 64
+texture = ExtResource("9_8c22d")
+texture_scale = 0.94
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(0, 12)
+shape = SubResource("CapsuleShape2D_l6a72")
+debug_color = Color(0, 0.54902, 0.929412, 0.419608)
+
+[node name="SoundJump" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("13_v001l")
+volume_db = -0.262
+
+[node name="SoundShoot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("14_gjtuc")
+
+[node name="SoundHit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("15_nslho")
+volume_db = -0.604
+
+[node name="SoundCoin" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_biil2")
+volume_db = 0.597
+
+[node name="SoundGameOver" type="AudioStreamPlayer" parent="."]
+process_mode = 3
+stream = ExtResource("17_ti7c7")
+volume_db = 2.351
+
+[connection signal="transitioned" from="StateMachine" to="." method="_on_StateMachine_transitioned"]
+[connection signal="timeout" from="AnimatedSprite2D/SpriteDmg/Timer" to="." method="_on_Timer_timeout"]

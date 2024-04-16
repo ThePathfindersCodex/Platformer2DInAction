@@ -1,0 +1,28 @@
+[gd_scene load_steps=2 format=3 uid="uid://dj8asds2vdlre"]
+
+[ext_resource type="Texture2D" uid="uid://cpjhbu01hx8oa" path="res://assets/dark-background.png" id="1_2hqpx"]
+
+[node name="ParallaxBackground" type="ParallaxBackground"]
+layer = -1
+follow_viewport_enabled = true
+scroll_ignore_camera_zoom = true
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+light_mask = 2
+motion_scale = Vector2(0.1, 0.1)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxLayer"]
+self_modulate = Color(0.133333, 0.152941, 0.588235, 1)
+light_mask = 128
+scale = Vector2(8, 8)
+texture = ExtResource("1_2hqpx")
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxLayer"]
+visible = false
+light_mask = 128
+scale = Vector2(40, 38.564)
+texture = ExtResource("1_2hqpx")
+
+[node name="CanvasModulate" type="CanvasModulate" parent="ParallaxLayer"]
+light_mask = 2
+color = Color(0.290196, 0.290196, 0.290196, 1)

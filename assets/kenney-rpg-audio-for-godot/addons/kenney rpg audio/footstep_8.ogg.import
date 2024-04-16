@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dgjigasaaq550"
+path="res://.godot/imported/footstep_8.ogg-096ab0fbb8f20e63a9b3a784f899453f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/kenney-rpg-audio-for-godot/addons/kenney rpg audio/footstep_8.ogg"
+dest_files=["res://.godot/imported/footstep_8.ogg-096ab0fbb8f20e63a9b3a784f899453f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

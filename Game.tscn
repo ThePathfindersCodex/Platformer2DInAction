@@ -1,0 +1,210 @@
+[gd_scene load_steps=10 format=3 uid="uid://bm3s6x3r2fl27"]
+
+[ext_resource type="Script" path="res://Game.gd" id="1_ctiw2"]
+[ext_resource type="PackedScene" uid="uid://domreaktn4pq8" path="res://scenes/Player.tscn" id="2_5ni1d"]
+[ext_resource type="PackedScene" uid="uid://dj8asds2vdlre" path="res://scenes/ParallaxBackground.tscn" id="3_hg5hu"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_gvfcw"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wn4e0"]
+bg_color = Color(0.0509804, 0.0509804, 0.0509804, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.360784, 0.196078, 0.117647, 1)
+corner_radius_top_left = 12
+corner_radius_top_right = 12
+corner_radius_bottom_right = 12
+corner_radius_bottom_left = 12
+expand_margin_left = 5.0
+expand_margin_top = 5.0
+expand_margin_right = 5.0
+expand_margin_bottom = 5.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jv5gh"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4bxx4"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6fbpl"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hl774"]
+bg_color = Color(0, 0, 0, 1)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 3
+border_color = Color(0.164706, 0.0784314, 0.0352941, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+
+[node name="Game" type="Node2D"]
+process_mode = 3
+light_mask = 0
+script = ExtResource("1_ctiw2")
+
+[node name="Player" parent="." instance=ExtResource("2_5ni1d")]
+process_mode = 1
+light_mask = 0
+
+[node name="Level" type="Node" parent="."]
+
+[node name="PauseLayer" type="CanvasLayer" parent="Level"]
+process_mode = 3
+layer = 20
+
+[node name="PausePanel" type="Panel" parent="Level/PauseLayer"]
+visible = false
+light_mask = 0
+custom_minimum_size = Vector2(80, 0)
+offset_left = 476.0
+offset_top = 257.0
+offset_right = 556.0
+offset_bottom = 297.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_gvfcw")
+
+[node name="Label" type="Label" parent="Level/PauseLayer/PausePanel"]
+layout_mode = 0
+offset_left = 10.0
+offset_top = 8.0
+offset_right = 72.0
+offset_bottom = 34.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "PAUSED"
+
+[node name="HUDLayer" type="CanvasLayer" parent="Level"]
+process_mode = 3
+layer = 15
+
+[node name="HealthPanel" type="Panel" parent="Level/HUDLayer"]
+light_mask = 0
+custom_minimum_size = Vector2(64, 0)
+offset_left = 17.0
+offset_top = 18.0
+offset_right = 81.0
+offset_bottom = 58.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_wn4e0")
+
+[node name="Label" type="Label" parent="Level/HUDLayer/HealthPanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "HEALTH"
+
+[node name="health" type="Label" parent="Level/HUDLayer/HealthPanel"]
+layout_mode = 0
+offset_left = 26.0
+offset_top = 19.0
+offset_right = 66.0
+offset_bottom = 45.0
+text = "5"
+
+[node name="UI" type="Node2D" parent="Level/HUDLayer"]
+
+[node name="Panels" type="Node2D" parent="Level/HUDLayer/UI"]
+
+[node name="MessagePanel" type="Panel" parent="Level/HUDLayer/UI/Panels"]
+visible = false
+self_modulate = Color(1, 1, 1, 0)
+light_mask = 0
+offset_left = 438.0
+offset_top = 248.0
+offset_right = 478.0
+offset_bottom = 288.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_jv5gh")
+
+[node name="Label" type="Label" parent="Level/HUDLayer/UI/Panels/MessagePanel"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 23.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+
+[node name="Timer" type="Timer" parent="Level/HUDLayer/UI/Panels/MessagePanel"]
+process_mode = 1
+wait_time = 5.0
+
+[node name="WinPanel" type="Panel" parent="Level/HUDLayer/UI/Panels"]
+visible = false
+light_mask = 0
+custom_minimum_size = Vector2(128, 128)
+offset_left = 448.0
+offset_top = 241.0
+offset_right = 576.0
+offset_bottom = 369.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_4bxx4")
+
+[node name="Label" type="Label" parent="Level/HUDLayer/UI/Panels/WinPanel"]
+layout_mode = 0
+offset_left = 14.0
+offset_top = 19.0
+offset_right = 97.0
+offset_bottom = 71.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "You Win!
+Your Time:"
+
+[node name="LabelTime" type="Label" parent="Level/HUDLayer/UI/Panels/WinPanel"]
+self_modulate = Color(1, 1, 0, 1)
+layout_mode = 0
+offset_left = 39.0
+offset_top = 82.0
+offset_right = 79.0
+offset_bottom = 108.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "???"
+
+[node name="GameOverPanel" type="Panel" parent="Level/HUDLayer/UI/Panels"]
+visible = false
+light_mask = 0
+custom_minimum_size = Vector2(128, 0)
+offset_left = 447.0
+offset_top = 269.0
+offset_right = 575.0
+offset_bottom = 309.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_6fbpl")
+
+[node name="Label" type="Label" parent="Level/HUDLayer/UI/Panels/GameOverPanel"]
+layout_mode = 0
+offset_left = 19.0
+offset_top = 8.0
+offset_right = 111.0
+offset_bottom = 34.0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+text = "GAME OVER"
+
+[node name="Debug" type="Node2D" parent="Level/HUDLayer"]
+
+[node name="DebugPanel" type="Panel" parent="Level/HUDLayer/Debug"]
+light_mask = 0
+custom_minimum_size = Vector2(256, 128)
+offset_left = 756.0
+offset_top = 12.0
+offset_right = 1012.0
+offset_bottom = 140.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_hl774")
+
+[node name="DebugText" type="Label" parent="Level/HUDLayer/Debug/DebugPanel"]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 57.0
+offset_bottom = 34.0
+text = "debug window
+gametime counter"
+
+[node name="PState" type="Label" parent="Level/HUDLayer/Debug/DebugPanel"]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 91.0
+offset_right = 233.0
+offset_bottom = 117.0
+text = "player state"
+
+[node name="LevelLayer" type="CanvasLayer" parent="Level"]
+process_mode = 1
+layer = 10
+follow_viewport_enabled = true
+
+[node name="ParallaxBackground" parent="Level" instance=ExtResource("3_hg5hu")]
