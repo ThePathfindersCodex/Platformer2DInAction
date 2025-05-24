@@ -1,0 +1,9 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://plnxfd7od4b"]
+
+[ext_resource type="Shader" path="res://shaders/test5.gdshader" id="1_k2pvj"]
+
+[resource]
+shader = ExtResource("1_k2pvj")
+shader_parameter/strength = 0.298
+shader_parameter/speed = 0.5
+shader_parameter/angle = 24.27

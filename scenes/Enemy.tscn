@@ -1,8 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4gv8ywpbjwtb"]
+[gd_scene load_steps=7 format=3 uid="uid://b4gv8ywpbjwtb"]
 
 [ext_resource type="Script" path="res://scripts/mobs/Enemy.gd" id="1_4snp7"]
+[ext_resource type="Shader" path="res://shaders/test2.gdshader" id="1_7rxwh"]
 [ext_resource type="Script" path="res://scripts/mobs/EnemyStats.gd" id="2_22lvo"]
 [ext_resource type="Texture2D" uid="uid://g7eqkyckrg6b" path="res://assets/enemy.png" id="3_fcgyw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hbpxr"]
+shader = ExtResource("1_7rxwh")
+shader_parameter/max_line_width = 3.0
+shader_parameter/min_line_width = -5.0
+shader_parameter/freq = 8.0
+shader_parameter/block_size = 0.75
+shader_parameter/outline_colour = Color(1, 0.176471, 0, 1)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0stfl"]
 radius = 55.0
@@ -19,6 +28,7 @@ script = ExtResource("2_22lvo")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0, 0.396078, 1)
 light_mask = 10
+material = SubResource("ShaderMaterial_hbpxr")
 position = Vector2(0, 7)
 texture = ExtResource("3_fcgyw")
 

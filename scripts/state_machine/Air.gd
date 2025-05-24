@@ -1,7 +1,7 @@
 extends PlayerState
 
 func enter(_msg := {}) -> void:
-	print('ENTER AIR ',player.velocity,_msg)
+#	print('ENTER AIR ',player.velocity,_msg)
 	if _msg.has("do_jump"):
 		player.velocity.y = -player.jump_impulse
 		player.sound_jump.play()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://domreaktn4pq8"]
+[gd_scene load_steps=28 format=3 uid="uid://domreaktn4pq8"]
 
 [ext_resource type="Script" path="res://scripts/Player.gd" id="1_klsk3"]
 [ext_resource type="Script" path="res://scripts/state_machine/StateMachine.gd" id="2_fhn2p"]
@@ -9,8 +9,7 @@
 [ext_resource type="Script" path="res://scripts/state_machine/Stagger.gd" id="6_0jmgd"]
 [ext_resource type="Texture2D" uid="uid://dvfltv5erdaws" path="res://assets/pc.png" id="8_sgqrx"]
 [ext_resource type="Texture2D" uid="uid://c8v2u1iw8uabl" path="res://assets/light.png" id="9_8c22d"]
-[ext_resource type="Texture2D" uid="uid://vbxp7vtm8yme" path="res://assets/pc-anim.png" id="9_a5lgd"]
-[ext_resource type="Texture2D" uid="uid://c7wofm1fpdga8" path="res://assets/shield.png" id="10_th8wi"]
+[ext_resource type="Texture2D" uid="uid://0asu8x7gf0uk" path="res://assets/player-sprite-anim-test-64x64-run.png" id="9_yi6f5"]
 [ext_resource type="Texture2D" uid="uid://cik1ota0kejmb" path="res://assets/pistol.png" id="11_qvl6n"]
 [ext_resource type="AudioStream" uid="uid://dooordarqcsok" path="res://assets/kenney-rpg-audio-for-godot/addons/kenney rpg audio/footstep_2.ogg" id="13_v001l"]
 [ext_resource type="AudioStream" uid="uid://13bq4i4pp01p" path="res://assets/kenney_sci-fi-sounds/Audio/laserSmall_000.ogg" id="14_gjtuc"]
@@ -18,27 +17,47 @@
 [ext_resource type="AudioStream" uid="uid://cj2nnu86mm4we" path="res://assets/kenney-rpg-audio-for-godot/addons/kenney rpg audio/handle_coins.ogg" id="16_biil2"]
 [ext_resource type="AudioStream" uid="uid://bl70glty8k5yx" path="res://assets/more-audio/videogame-death-sound-43894.mp3" id="17_ti7c7"]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_4fm7d"]
-atlas = ExtResource("9_a5lgd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_oeflb"]
+atlas = ExtResource("9_yi6f5")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4iufx"]
+atlas = ExtResource("9_yi6f5")
 region = Rect2(0, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_1e5ak"]
-atlas = ExtResource("9_a5lgd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_bin7c"]
+atlas = ExtResource("9_yi6f5")
 region = Rect2(64, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vqv7i"]
-atlas = ExtResource("9_a5lgd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ssb65"]
+atlas = ExtResource("9_yi6f5")
 region = Rect2(128, 0, 64, 64)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_iwlfi"]
-atlas = ExtResource("9_a5lgd")
+[sub_resource type="AtlasTexture" id="AtlasTexture_ujkll"]
+atlas = ExtResource("9_yi6f5")
 region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1n8q3"]
+atlas = ExtResource("9_yi6f5")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6uo0r"]
+atlas = ExtResource("9_yi6f5")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucouc"]
+atlas = ExtResource("9_yi6f5")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i3lle"]
+atlas = ExtResource("9_yi6f5")
+region = Rect2(448, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1qftw"]
 animations = [{
 "frames": [{
 "duration": 1.0,
-"texture": ExtResource("8_sgqrx")
+"texture": SubResource("AtlasTexture_oeflb")
 }],
 "loop": true,
 "name": &"default",
@@ -46,25 +65,37 @@ animations = [{
 }, {
 "frames": [{
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_4fm7d")
+"texture": SubResource("AtlasTexture_4iufx")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_1e5ak")
+"texture": SubResource("AtlasTexture_bin7c")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_vqv7i")
+"texture": SubResource("AtlasTexture_ssb65")
 }, {
 "duration": 1.0,
-"texture": SubResource("AtlasTexture_iwlfi")
+"texture": SubResource("AtlasTexture_ujkll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1n8q3")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6uo0r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucouc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i3lle")
 }],
 "loop": true,
 "name": &"move",
-"speed": 5.0
+"speed": 4.0
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_l6a72"]
-radius = 17.0
-height = 40.0
+radius = 15.0
+height = 58.0
 
 [node name="Player" type="CharacterBody2D"]
 collision_mask = 2
@@ -93,17 +124,19 @@ script = ExtResource("3_xkeww")
 position = Vector2(0, -120)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+modulate = Color(0.533333, 0.533333, 0.533333, 1)
 light_mask = 2
 sprite_frames = SubResource("SpriteFrames_1qftw")
 speed_scale = 2.0
 
 [node name="SpriteShield" type="Sprite2D" parent="AnimatedSprite2D"]
 visible = false
+self_modulate = Color(0.156863, 1, 0.988235, 1)
 light_mask = 2
-position = Vector2(37, 17)
-scale = Vector2(0.602539, 0.602539)
-texture = ExtResource("10_th8wi")
-offset = Vector2(-62, -10)
+position = Vector2(61, 12)
+offset = Vector2(-62, -11.752)
+region_enabled = true
+region_rect = Rect2(128, 0, 64, 64)
 
 [node name="SpriteBoots" type="Sprite2D" parent="AnimatedSprite2D"]
 visible = false
@@ -112,7 +145,7 @@ light_mask = 2
 [node name="SpritePistol" type="Sprite2D" parent="AnimatedSprite2D"]
 visible = false
 light_mask = 2
-position = Vector2(22, 22)
+position = Vector2(19.436, 12.543)
 scale = Vector2(0.28125, 0.28125)
 texture = ExtResource("11_qvl6n")
 offset = Vector2(-10, -30)
@@ -124,9 +157,10 @@ light_mask = 2
 
 [node name="SpriteDmg" type="Sprite2D" parent="AnimatedSprite2D"]
 visible = false
-self_modulate = Color(1, 0, 0.0352941, 1)
+self_modulate = Color(0.447059, 0, 0.00392157, 1)
 light_mask = 2
-texture = ExtResource("8_sgqrx")
+region_enabled = true
+region_rect = Rect2(192, 0, 64, 64)
 
 [node name="Timer" type="Timer" parent="AnimatedSprite2D/SpriteDmg"]
 wait_time = 0.7
@@ -139,7 +173,7 @@ texture = ExtResource("8_sgqrx")
 [node name="PointLight2D" type="PointLight2D" parent="."]
 light_mask = 2
 color = Color(0.654902, 0.654902, 0, 1)
-energy = 2.45
+energy = 2.57
 range_layer_min = -1
 range_layer_max = 512
 range_item_cull_mask = 130
@@ -152,7 +186,7 @@ texture_scale = 0.94
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(0, 12)
+position = Vector2(0, 3)
 shape = SubResource("CapsuleShape2D_l6a72")
 debug_color = Color(0, 0.54902, 0.929412, 0.419608)
 

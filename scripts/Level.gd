@@ -31,7 +31,7 @@ func _ready():
 	
 func _on_Area2D_body_entered(body):
 	# hazard damage
-	print("LEVEL ("+get_name()+") _on_Area2D_body_entered  ",body.get_name())
+#	print("LEVEL ("+get_name()+") _on_Area2D_body_entered  ",body.get_name())
 	body.take_damage(1)
 	
 func init_player_triggers():

@@ -17,7 +17,7 @@ func start_boss_music():
 		Globals.levelInst.get_node("AudioStreamPlayerBoss").play()
 func stop_boss_music():
 	if Globals.levelInst.get_node("AudioStreamPlayerBoss").playing:
-		Globals.levelInst.get_node("AudioStreamPlayerBoss").stop()	
+		Globals.levelInst.get_node("AudioStreamPlayerBoss").stop()
 		Globals.levelInst.get_node("AudioStreamPlayer").play()
 
 func _ready():
@@ -26,7 +26,7 @@ func _ready():
 	$Panel/Label.text=str($EnemyStats.health)
 
 func _on_body_entered(body):
-	print("BOSS _on_body_entered  ",body.get_name())
+#	print("BOSS _on_body_entered  ",body.get_name())
 	if body.get_name()=="Player":
 		body.take_damage(5)
 

@@ -1,9 +1,10 @@
 extends PlayerState
 
 func enter(_msg := {}) -> void:
-	print('ENTER STAGGER ',player.velocity,_msg)
+#	print('ENTER STAGGER ',player.velocity,_msg)
 #	player.velocity.y = Vector2.ZERO.y
 	#Engine.time_scale =  .2
+	pass
 
 func physics_update(_delta: float) -> void:
 

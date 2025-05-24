@@ -3,8 +3,12 @@ extends Node
 var alltime=0	
 var activetime=0	
 var SceneLevel=preload("res://scenes/Level1.tscn")
+var ScenePlayer=preload("res://scenes/Player.tscn")
 
 func _ready():
+	restart()
+	
+func restart():
 	# game globals
 	Globals.gameInst = self 
 	Globals.pauseInst = $Level/PauseLayer
@@ -15,18 +19,24 @@ func _ready():
 	
 	# remove the player temporarily
 	remove_child(Globals.playerInst)
-	
+
 	# create new level scene instance and place it into the runtime level layer
 	Globals.levelInst = SceneLevel.instantiate()
 	$Level/LevelLayer.add_child(Globals.levelInst)
-	
+
 	# re-add the player, but place them into the runtime level layer at the SPAWN POINT
 	Globals.playerInst.translate(Globals.levelInst.get_node("PlayerSpawn").position)
 	$Level/LevelLayer.add_child(Globals.playerInst)
-	
+
 	# startup level
 	Globals.levelInst.init_player_triggers()
 	Globals.levelInst.start_level()
+
+	Globals.GamePaused = false
+	get_tree().paused = false
+
+func restart_level():
+	get_tree().reload_current_scene()
 
 
 func _process(delta: float) -> void:
@@ -46,9 +56,14 @@ func handle_pause():
 		if Input.is_action_just_pressed("pause"):	
 			if Globals.GamePaused:
 				Globals.GamePaused = false
+				Globals.pauseInst.get_node("BGPanel").visible=false
 				Globals.pauseInst.get_node("PausePanel").visible=false
 				get_tree().paused = false
 			else:
 				Globals.GamePaused = true
+				Globals.pauseInst.get_node("BGPanel").visible=true
 				Globals.pauseInst.get_node("PausePanel").visible=true
 				get_tree().paused = true
+
+func _on_button_restart_pressed():
+	restart_level()

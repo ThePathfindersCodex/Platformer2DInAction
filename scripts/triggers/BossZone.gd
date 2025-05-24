@@ -9,11 +9,11 @@ func _ready():
 	body_exited.connect(self._on_body_exited)
 	
 func _on_body_entered(_body):
-	print("boss active")
+#	print("boss active")
 	emit_signal("BossActive")
 	active=true
 	
 func _on_body_exited(_body):
-	print("boss inactive")
+#	print("boss inactive")
 	emit_signal("BossInactive")
 	active=false

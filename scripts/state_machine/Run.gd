@@ -1,7 +1,8 @@
 extends PlayerState
 
 func enter(_msg := {}) -> void:
-	print('ENTER RUN ',player.velocity,_msg)
+#	print('ENTER RUN ',player.velocity,_msg)
+	pass
 
 func physics_update(delta: float) -> void:
 	

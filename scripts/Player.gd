@@ -83,7 +83,7 @@ func handle_guns():
 func start_bullet():
 	var instance = bullet_scene.instantiate()
 	instance.set_direction(Vector2(last_facing,0))
-	instance.translate(Vector2(position.x+(16*last_facing),position.y+16))
+	instance.translate(Vector2(position.x+(16*last_facing),position.y))
 	get_parent().add_child(instance)
 	sound_shoot.play()
 

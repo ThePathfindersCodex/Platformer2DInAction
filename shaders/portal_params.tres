@@ -1,0 +1,15 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://dae3a16ci1svf"]
+
+[ext_resource type="Shader" path="res://shaders/test4.gdshader" id="1_qimd0"]
+
+[resource]
+shader = ExtResource("1_qimd0")
+shader_parameter/speed_phase = 1.0
+shader_parameter/speed_rotation = 30.0
+shader_parameter/offset_phase = 0.0
+shader_parameter/offset_rotation = 0.0
+shader_parameter/frequency = 8.0
+shader_parameter/scale = 3.0
+shader_parameter/contrast = 15.0
+shader_parameter/color1 = Color(0, 1, 1, 1)
+shader_parameter/color2 = Color(0.431373, 0.431373, 0.431373, 0.32549)

@@ -1,7 +1,7 @@
 extends PlayerState
 
 func enter(_msg := {}) -> void:
-	print('ENTER IDLE ',player.velocity,_msg)
+#	print('ENTER IDLE ',player.velocity,_msg)
 	player.velocity = Vector2.ZERO
 
 func physics_update(_delta: float) -> void:

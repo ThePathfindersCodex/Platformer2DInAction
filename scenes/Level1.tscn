@@ -1,16 +1,20 @@
-[gd_scene load_steps=56 format=3 uid="uid://tgvwlvxn8lgm"]
+[gd_scene load_steps=67 format=3 uid="uid://tgvwlvxn8lgm"]
 
 [ext_resource type="Texture2D" uid="uid://d3l7e7sjxs3ub" path="res://assets/tiles2.png" id="1_4thlt"]
 [ext_resource type="Script" path="res://scripts/Level.gd" id="1_e3vkp"]
+[ext_resource type="Shader" path="res://shaders/test.gdshader" id="1_gowd6"]
 [ext_resource type="Texture2D" uid="uid://cgmu11g3liasn" path="res://assets/tiles1.png" id="1_lqjrh"]
 [ext_resource type="Script" path="res://scripts/triggers/Star.gd" id="3_3kcl6"]
 [ext_resource type="Texture2D" uid="uid://2ci22k3uw8la" path="res://assets/hazard.png" id="3_mjqn7"]
 [ext_resource type="Script" path="res://scripts/triggers/Heart.gd" id="5_v87di"]
+[ext_resource type="Material" uid="uid://camcpt3v8ahex" path="res://shaders/hazard_params.tres" id="6_cmvb4"]
 [ext_resource type="Texture2D" uid="uid://c2ggoihvkyn3j" path="res://assets/star.png" id="6_kqeq4"]
 [ext_resource type="Script" path="res://scripts/triggers/Boots.gd" id="8_7hfqh"]
 [ext_resource type="Texture2D" uid="uid://dga4jyth2xjpv" path="res://assets/heart.png" id="8_gd1ep"]
+[ext_resource type="Shader" path="res://shaders/test6.gdshader" id="9_t23fj"]
 [ext_resource type="Texture2D" uid="uid://daj1vvbs1l3h8" path="res://assets/boots.png" id="10_dnpm4"]
 [ext_resource type="Script" path="res://scripts/triggers/Prompt.gd" id="10_pqffw"]
+[ext_resource type="Material" uid="uid://plnxfd7od4b" path="res://shaders/heart_params.tres" id="12_54bb0"]
 [ext_resource type="Script" path="res://scripts/triggers/Key.gd" id="12_h18ye"]
 [ext_resource type="Script" path="res://scripts/triggers/Toggle.gd" id="12_x3rpt"]
 [ext_resource type="Script" path="res://scripts/triggers/Lock.gd" id="12_yuo78"]
@@ -21,10 +25,12 @@
 [ext_resource type="AudioStream" uid="uid://4yqekixr7t35" path="res://assets/kenney-rpg-audio-for-godot/addons/kenney rpg audio/door_open_2.ogg" id="16_t2tdg"]
 [ext_resource type="Texture2D" uid="uid://d0gvolxli8f6c" path="res://assets/prompt.png" id="17_s11kk"]
 [ext_resource type="Script" path="res://scripts/triggers/Pistol.gd" id="20_aobeb"]
+[ext_resource type="Material" uid="uid://bgrcuqtdx3aym" path="res://shaders/prompt_params.tres" id="20_e1l4k"]
 [ext_resource type="Texture2D" uid="uid://bnuacrfo0cepg" path="res://assets/portal.png" id="20_so01o"]
 [ext_resource type="Script" path="res://scripts/triggers/Shield.gd" id="22_adb27"]
 [ext_resource type="Texture2D" uid="uid://cik1ota0kejmb" path="res://assets/pistol.png" id="22_i6y0k"]
 [ext_resource type="Texture2D" uid="uid://c7wofm1fpdga8" path="res://assets/shield.png" id="24_gsq0j"]
+[ext_resource type="Material" uid="uid://dae3a16ci1svf" path="res://shaders/portal_params.tres" id="24_k2trs"]
 [ext_resource type="PackedScene" uid="uid://b4gv8ywpbjwtb" path="res://scenes/Enemy.tscn" id="24_wyltc"]
 [ext_resource type="Script" path="res://scripts/mobs/Boss.gd" id="25_l1a58"]
 [ext_resource type="Script" path="res://scripts/mobs/EnemyStats.gd" id="26_igev1"]
@@ -35,14 +41,34 @@
 [ext_resource type="AudioStream" uid="uid://jmxah6sjy54o" path="res://assets/more-audio/Dragon-Castle(chosic.com).mp3" id="33_hp6hy"]
 [ext_resource type="AudioStream" uid="uid://ci6et6noglxkr" path="res://assets/more-audio/you-win-sequence-2-183949.mp3" id="34_t6egd"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8nyge"]
+shader = ExtResource("1_gowd6")
+shader_parameter/color1 = Color(0.917647, 0, 0, 1)
+shader_parameter/strength = 0.274
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_3jkq5"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5g865"]
+shader = ExtResource("1_gowd6")
+shader_parameter/color1 = Color(1, 1, 1, 1)
+shader_parameter/strength = 0.387
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_spjwy"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_4yvrh"]
+shader = ExtResource("1_gowd6")
+shader_parameter/color1 = Color(1, 0, 0, 1)
+shader_parameter/strength = 0.145
+
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_cpd0l"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8rfr6"]
+shader = ExtResource("1_gowd6")
+shader_parameter/color1 = Color(1, 1, 0, 1)
+shader_parameter/strength = 0.084
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_qpp78"]
 polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
@@ -51,21 +77,25 @@ polygon = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 texture = ExtResource("1_4thlt")
 texture_region_size = Vector2i(64, 64)
 0:0/0 = 0
+0:0/0/material = SubResource("ShaderMaterial_8nyge")
 0:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_3jkq5")
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:0/0 = 0
+1:0/0/material = SubResource("ShaderMaterial_4yvrh")
 1:0/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_cpd0l")
 1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:0/0/physics_layer_0/angular_velocity = 0.0
 1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 0:1/0 = 0
+0:1/0/material = SubResource("ShaderMaterial_5g865")
 0:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_spjwy")
 0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:1/0/physics_layer_0/angular_velocity = 0.0
 0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-32, -32, 32, -32, 32, 32, -32, 32)
 1:1/0 = 0
+1:1/0/material = SubResource("ShaderMaterial_8rfr6")
 1:1/0/occlusion_layer_0/polygon = SubResource("OccluderPolygon2D_qpp78")
 1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 1:1/0/physics_layer_0/angular_velocity = 0.0
@@ -120,6 +150,14 @@ size = Vector2(64, 64)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_2m6ms"]
 polygon = PackedVector2Array(20, 20, 20, -20, -20, -20, -20, 20, 20, 20)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_h6asj"]
+shader = ExtResource("9_t23fj")
+shader_parameter/max_blend = 0.0
+shader_parameter/rotation_offset = 0.0
+shader_parameter/intensity = 10.0
+shader_parameter/invert = true
+shader_parameter/rel_rect_size = Vector2(1024, 600)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_yf86l"]
 radius = 23.0217
@@ -176,7 +214,7 @@ texture_scale = 1.29
 
 [node name="PointLight2DStatic2" type="PointLight2D" parent="Lights"]
 light_mask = 8
-position = Vector2(3051, -850)
+position = Vector2(3328, -679)
 color = Color(0.0980392, 0.447059, 0.980392, 0.564706)
 energy = 2.25
 range_layer_min = -1
@@ -213,8 +251,8 @@ position = Vector2(1889, 864)
 collision_layer = 32
 
 [node name="Sprite2D" type="Sprite2D" parent="HazardTiles/Area2D"]
-self_modulate = Color(0.607843, 0.137255, 0, 1)
 light_mask = 2
+material = ExtResource("6_cmvb4")
 texture = ExtResource("3_mjqn7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardTiles/Area2D"]
@@ -222,6 +260,7 @@ visible = false
 shape = SubResource("RectangleShape2D_n2wr7")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="HazardTiles/Area2D"]
+visible = false
 occluder = SubResource("OccluderPolygon2D_tum85")
 sdf_collision = false
 occluder_light_mask = 64
@@ -231,8 +270,8 @@ position = Vector2(3037, -676)
 collision_layer = 32
 
 [node name="Sprite2D" type="Sprite2D" parent="HazardTiles/Area2D2"]
-self_modulate = Color(0.607843, 0.137255, 0, 1)
 light_mask = 2
+material = ExtResource("6_cmvb4")
 texture = ExtResource("3_mjqn7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardTiles/Area2D2"]
@@ -240,6 +279,7 @@ visible = false
 shape = SubResource("RectangleShape2D_n2wr7")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="HazardTiles/Area2D2"]
+visible = false
 occluder = SubResource("OccluderPolygon2D_ogmwp")
 sdf_collision = false
 occluder_light_mask = 64
@@ -249,8 +289,8 @@ position = Vector2(1006, 595)
 collision_layer = 32
 
 [node name="Sprite2D" type="Sprite2D" parent="HazardTiles/Area2D3"]
-self_modulate = Color(0.607843, 0.137255, 0, 1)
 light_mask = 2
+material = ExtResource("6_cmvb4")
 texture = ExtResource("3_mjqn7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardTiles/Area2D3"]
@@ -258,6 +298,7 @@ visible = false
 shape = SubResource("RectangleShape2D_n2wr7")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="HazardTiles/Area2D3"]
+visible = false
 occluder = SubResource("OccluderPolygon2D_0o2bd")
 sdf_collision = false
 occluder_light_mask = 64
@@ -267,8 +308,8 @@ position = Vector2(2904, 609)
 collision_layer = 32
 
 [node name="Sprite2D" type="Sprite2D" parent="HazardTiles/Area2D4"]
-self_modulate = Color(0.607843, 0.137255, 0, 1)
 light_mask = 2
+material = ExtResource("6_cmvb4")
 texture = ExtResource("3_mjqn7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardTiles/Area2D4"]
@@ -276,6 +317,7 @@ visible = false
 shape = SubResource("RectangleShape2D_n2wr7")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="HazardTiles/Area2D4"]
+visible = false
 occluder = SubResource("OccluderPolygon2D_4jvli")
 sdf_collision = false
 occluder_light_mask = 64
@@ -285,8 +327,8 @@ position = Vector2(3991, -293)
 collision_layer = 32
 
 [node name="Sprite2D" type="Sprite2D" parent="HazardTiles/Area2D5"]
-self_modulate = Color(0.607843, 0.137255, 0, 1)
 light_mask = 2
+material = ExtResource("6_cmvb4")
 texture = ExtResource("3_mjqn7")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardTiles/Area2D5"]
@@ -294,6 +336,7 @@ visible = false
 shape = SubResource("RectangleShape2D_n2wr7")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="HazardTiles/Area2D5"]
+visible = false
 occluder = SubResource("OccluderPolygon2D_445jn")
 sdf_collision = false
 occluder_light_mask = 64
@@ -304,8 +347,8 @@ position = Vector2(1247, -681)
 collision_layer = 32
 
 [node name="Sprite2D" type="Sprite2D" parent="HazardTiles/Area2D6"]
-self_modulate = Color(0.607843, 0.137255, 0, 1)
 light_mask = 2
+material = ExtResource("6_cmvb4")
 texture = SubResource("CompressedTexture2D_24wdj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardTiles/Area2D6"]
@@ -313,6 +356,7 @@ visible = false
 shape = SubResource("RectangleShape2D_vemb3")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="HazardTiles/Area2D6"]
+visible = false
 occluder = SubResource("OccluderPolygon2D_2m6ms")
 sdf_collision = false
 occluder_light_mask = 64
@@ -323,8 +367,8 @@ position = Vector2(1373, 666)
 collision_layer = 32
 
 [node name="Sprite2D" type="Sprite2D" parent="HazardTiles/Area2D7"]
-self_modulate = Color(0.607843, 0.137255, 0, 1)
 light_mask = 2
+material = ExtResource("6_cmvb4")
 texture = SubResource("CompressedTexture2D_24wdj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardTiles/Area2D7"]
@@ -332,6 +376,7 @@ visible = false
 shape = SubResource("RectangleShape2D_vemb3")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="HazardTiles/Area2D7"]
+visible = false
 occluder = SubResource("OccluderPolygon2D_2m6ms")
 sdf_collision = false
 occluder_light_mask = 64
@@ -342,8 +387,8 @@ position = Vector2(1683, 662)
 collision_layer = 32
 
 [node name="Sprite2D" type="Sprite2D" parent="HazardTiles/Area2D8"]
-self_modulate = Color(0.607843, 0.137255, 0, 1)
 light_mask = 2
+material = ExtResource("6_cmvb4")
 texture = SubResource("CompressedTexture2D_24wdj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardTiles/Area2D8"]
@@ -351,12 +396,13 @@ visible = false
 shape = SubResource("RectangleShape2D_vemb3")
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="HazardTiles/Area2D8"]
+visible = false
 occluder = SubResource("OccluderPolygon2D_2m6ms")
 sdf_collision = false
 occluder_light_mask = 64
 
 [node name="PlayerSpawn" type="Node2D" parent="."]
-position = Vector2(292, 184)
+position = Vector2(281, 139)
 
 [node name="PlayerTriggers" type="Node" parent="."]
 
@@ -367,6 +413,12 @@ script = ExtResource("3_3kcl6")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerTriggers/Star"]
 light_mask = 10
+material = SubResource("ShaderMaterial_h6asj")
+texture = ExtResource("6_kqeq4")
+
+[node name="Sprite2D" type="Sprite2D" parent="PlayerTriggers/Star/Sprite2D"]
+visible = false
+z_index = -1
 texture = ExtResource("6_kqeq4")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerTriggers/Star"]
@@ -380,6 +432,7 @@ script = ExtResource("5_v87di")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerTriggers/Heart1"]
 light_mask = 10
+material = ExtResource("12_54bb0")
 texture = ExtResource("8_gd1ep")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerTriggers/Heart1"]
@@ -393,6 +446,7 @@ script = ExtResource("5_v87di")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerTriggers/Heart2"]
 light_mask = 10
+material = ExtResource("12_54bb0")
 texture = ExtResource("8_gd1ep")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerTriggers/Heart2"]
@@ -448,6 +502,7 @@ script = ExtResource("10_pqffw")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerTriggers/Prompt"]
 light_mask = 10
+material = ExtResource("20_e1l4k")
 texture = ExtResource("17_s11kk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerTriggers/Prompt"]
@@ -479,6 +534,7 @@ script = ExtResource("12_x3rpt")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerTriggers/Toggle"]
 light_mask = 10
+material = ExtResource("20_e1l4k")
 texture = ExtResource("17_s11kk")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerTriggers/Toggle"]
@@ -511,6 +567,7 @@ script = ExtResource("14_guecy")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerTriggers/Portal"]
 light_mask = 10
+material = ExtResource("24_k2trs")
 texture = ExtResource("20_so01o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerTriggers/Portal"]
@@ -548,6 +605,7 @@ script = ExtResource("14_guecy")
 
 [node name="Sprite2D" type="Sprite2D" parent="PlayerTriggers/Portal2"]
 light_mask = 10
+material = ExtResource("24_k2trs")
 texture = ExtResource("20_so01o")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerTriggers/Portal2"]
@@ -691,17 +749,16 @@ position = Vector2(1739, -521)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 light_mask = 6
-color = Color(0.0823529, 0.505882, 0.654902, 1)
+color = Color(0.537255, 0.898039, 1, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("32_mvlh3")
-volume_db = -12.091
+volume_db = -16.688
 autoplay = true
 
 [node name="AudioStreamPlayerBoss" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("33_hp6hy")
-volume_db = -11.336
-autoplay = true
+volume_db = -15.688
 
 [node name="AudioStreamPlayerWinMusic" type="AudioStreamPlayer" parent="."]
 process_mode = 3

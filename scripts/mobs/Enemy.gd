@@ -7,7 +7,7 @@ func _physics_process(_delta: float) -> void:
 	pass
 	
 func _on_area_entered(area):
-	print("ENEMY _on_area_entered  ",area.get_name())
+#	print("ENEMY _on_area_entered  ",area.get_name())
 	super(area)
 	if  area.get_name()=="Level1":  # TODO: use Type instead of Name?
 		last_facing *= -1
